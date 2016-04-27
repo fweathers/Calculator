@@ -24,12 +24,24 @@ class ViewController: UIViewController {
         }
         userIsInTheMiddleOfTyping = true
     }
+    
+//     Computed property. Get value and convert it to a Double and then set it to a String
+    var displayValue: Double {
+        get {
+            return Double(display.text!)!
+        }
+        set {
+            display.text = String(newValue)
+        }
+    }
 
     @IBAction func performOperation(sender: UIButton) {
         userIsInTheMiddleOfTyping = false
         if let mathematicalSymbol = sender.currentTitle {
             if mathematicalSymbol == "π" {
-                display.text = String(M_PI)
+                displayValue = M_PI
+            } else if mathematicalSymbol == "√" {
+                displayValue = sqrt(displayValue)
             }
         }
     }

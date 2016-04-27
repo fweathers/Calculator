@@ -13,6 +13,7 @@
 		B631C7CE1CCEC10800E64C15 /* Calculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B631C7CC1CCEC10800E64C15 /* Calculator.xcdatamodeld */; };
 		B631C7D01CCEC10800E64C15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B631C7CF1CCEC10800E64C15 /* Assets.xcassets */; };
 		B631C7D31CCEC10800E64C15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B631C7D11CCEC10800E64C15 /* LaunchScreen.storyboard */; };
+		B631C7DB1CD03BDD00E64C15 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B631C7DA1CD03BDD00E64C15 /* CalculatorBrain.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B631C7CF1CCEC10800E64C15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B631C7D21CCEC10800E64C15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B631C7D41CCEC10800E64C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B631C7DA1CD03BDD00E64C15 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				B631C7C51CCEC10800E64C15 /* AppDelegate.swift */,
 				B631C7C71CCEC10800E64C15 /* ViewController.swift */,
 				B631C7C91CCEC10800E64C15 /* Main.storyboard */,
+				B631C7DA1CD03BDD00E64C15 /* CalculatorBrain.swift */,
 				B631C7CF1CCEC10800E64C15 /* Assets.xcassets */,
 				B631C7D11CCEC10800E64C15 /* LaunchScreen.storyboard */,
 				B631C7D41CCEC10800E64C15 /* Info.plist */,
@@ -139,6 +142,7 @@
 			files = (
 				B631C7C81CCEC10800E64C15 /* ViewController.swift in Sources */,
 				B631C7C61CCEC10800E64C15 /* AppDelegate.swift in Sources */,
+				B631C7DB1CD03BDD00E64C15 /* CalculatorBrain.swift in Sources */,
 				B631C7CE1CCEC10800E64C15 /* Calculator.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
