@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var display: UILabel!
     
-    var userIsInTheMiddleOfTyping = false
-
-    @IBAction func touchDigit(sender: UIButton) {
+    @IBOutlet private weak var display: UILabel!
+    
+    private var userIsInTheMiddleOfTyping = false
+    
+    @IBAction private func touchDigit(sender: UIButton) {
         let digit = sender.currentTitle
         if userIsInTheMiddleOfTyping {
             let textCurrentlyInDisplay = display.text
@@ -25,8 +25,8 @@ class ViewController: UIViewController {
         userIsInTheMiddleOfTyping = true
     }
     
-//     Computed property. Get value and convert it to a Double and then set it to a String
-    var displayValue: Double {
+    //  Computed property. Get value and convert it to a Double and then set it to a String
+    private var displayValue: Double {
         get {
             return Double(display.text!)!
         }
@@ -34,16 +34,19 @@ class ViewController: UIViewController {
             display.text = String(newValue)
         }
     }
-
-    @IBAction func performOperation(sender: UIButton) {
-        userIsInTheMiddleOfTyping = false
-        if let mathematicalSymbol = sender.currentTitle {
-            if mathematicalSymbol == "π" {
-                displayValue = M_PI
-            } else if mathematicalSymbol == "√" {
-                displayValue = sqrt(displayValue)
-            }
+    
+    private var brain = CalculatorBrain()
+    
+    @IBAction private func performOperation(sender: UIButton) {
+        if userIsInTheMiddleOfTyping {
+            brain.setOperand(displayValue)
+            userIsInTheMiddleOfTyping = false
         }
+        if let mathematicalSymbol = sender.currentTitle {
+            brain.performOperation(mathematicalSymbol)
+        }
+        displayValue = brain.result
     }
 }
+
 
