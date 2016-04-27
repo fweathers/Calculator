@@ -16,12 +16,54 @@ class CalculatorBrain
         accumulator = operand
     }
     
+    // all operations
+    private var operations: Dictionary<String, Operation> = [
+        "π" : Operation.Constant(M_PI), //note: (M_PI) is an associated value,
+        "e" : Operation.Constant(M_E),
+        "√" : Operation.UnaryOperation(sqrt),
+        "cos" : Operation.UnaryOperation(cos),
+        "×" : Operation.BinaryOperation({ $0 * $1 }),
+        "÷" : Operation.BinaryOperation({ $0 / $1 }),
+        "+" : Operation.BinaryOperation({ $0 + $1 }),
+        "−" : Operation.BinaryOperation({ $0 - $1 }),
+        "=" : Operation.Equals
+    ]
+    
+    private enum Operation {
+        case Constant(Double)
+        case UnaryOperation((Double) -> Double)
+        case BinaryOperation((Double, Double) -> Double)
+        case Equals
+    }
+    
+    //all calculations
     func performOperation(symbol: String) {
-        switch symbol {
-        case "π": accumulator = M_PI
-        case "√": accumulator = sqrt(accumulator)
-        default: break
+        if let operation = operations[symbol] {
+            switch operation {
+            case .Constant(let associatedConstantValue):
+                accumulator = associatedConstantValue
+            case .UnaryOperation(let associatedFunction):
+                accumulator = associatedFunction(accumulator)
+            case .BinaryOperation(let function):
+                executePendingOperation()
+                pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
+            case .Equals:
+                executePendingOperation()
+            }
         }
+    }
+    
+    private func executePendingOperation() {
+        if pending != nil {
+            accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
+            pending = nil
+        }
+    }
+    private var pending: PendingBinaryOperationInfo? //optional bc it is only there if there is a pendingBinaryOperation
+    
+    private struct PendingBinaryOperationInfo {
+        var binaryFunction: (Double, Double) -> Double
+        var firstOperand: Double
     }
     
     var result: Double {
